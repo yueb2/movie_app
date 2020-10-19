@@ -8,12 +8,13 @@ class App extends React.Component {
     count: 0,
   };
 
-  //  this.setState({ count: this.state.count + 1 }) 대신 current를 사용한다.
+  //  this.setState({ count: this.state.count + 1 }) 대신 current를 사용한다. -> 위와같이 작성시, 어디선가 this.state.count가 update된다면 꼬일수 있다.
+  //setState를 호출하는 매순간 react는 새로운 state와 함깨ㅔ render function을 호출한다.
   add = () => {
-    this.setState({ count: this.state.count + 1 });
+    this.setState((current) => ({ count: current.count + 1 }));
   };
   minus = () => {
-    this.setState({ count: this.state.count - 1 });
+    this.setState((current) => ({ count: current.count - 1 }));
   };
 
   render() {

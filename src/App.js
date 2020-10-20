@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./Movie";
+import "./App.css";
 //class component
 //state => object이고, component의 data를 넣을 공간이 있다. (data는 변한다. 즉, 바꾸고싶은 data를 state에 넣는다.)
 class App extends React.Component {
@@ -31,10 +32,14 @@ class App extends React.Component {
   render() {
     const { isLoading, movies } = this.state;
     return (
-      <div>
-        {isLoading
-          ? "Loading.."
-          : movies.map((movie) => (
+      <section class="container">
+        {isLoading ? (
+          <div class="loader">
+            <span class="loader__text">Loading</span>
+          </div>
+        ) : (
+          <div class="movies">
+            {movies.map((movie) => (
               <Movie
                 key={movie.id}
                 id={movie.id}
@@ -44,7 +49,9 @@ class App extends React.Component {
                 poster={movie.medium_cover_image}
               />
             ))}
-      </div>
+          </div>
+        )}
+      </section>
     );
   }
 }

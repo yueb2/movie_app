@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React from "react";
 
 //클릭없이 url로 이동시 home으로 redirect
